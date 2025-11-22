@@ -40,6 +40,12 @@ requirements = [
     ("urllib3", "urllib3"),
     ("whois", "whois"),
     ("whoiam", "whoiam"),
+    ("phonenumbers", "phonenumbers"),
+    ("instaloader", "instaloader"),
+    ("pwinput", "pwinput"),
+    ("piexif", "piexif"),
+    ("scapy", "scapy"),
+    ("tabulate", "tabulate"),
 ]
 
 for package, module in requirements:
