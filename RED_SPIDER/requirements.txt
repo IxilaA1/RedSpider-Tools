@@ -6,6 +6,7 @@ os
 time
 sys
 beautifulsoup4
+dns
 browser-cookie3
 colorama
 cryptography
