@@ -1,6 +1,0 @@
-# Fichier exemple: subghz_tx_1.sub
-# Type: .sub
-# Ajoutez vos données ici
-
-DATA: 0x1234ABCD
-STATUS: OK
