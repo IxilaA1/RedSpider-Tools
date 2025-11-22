@@ -1,48 +1,48 @@
+import subprocess
 import sys
-import os
-import webbrowser
+import importlib
 
-# Liens directs
-TELEGRAM_URL = ""
-GUNSLOL_URL = ""
-
-def open_sites():
+def install_package(package_name, module_name=None):
+    if module_name is None:
+        module_name = package_name
     try:
-        webbrowser.open(TELEGRAM_URL)
-        webbrowser.open(GUNSLOL_URL)
-    except Exception:
-        pass
+        importlib.import_module(module_name)
+        print(f"{module_name} is already installed.")
+    except ImportError:
+        print(f"Installing {package_name}...")
+        subprocess.check_call([sys.executable, "-m", "pip", "install", package_name])
 
-def clear_screen():
-    os.system("cls" if sys.platform.startswith("win") else "clear")
+# List of packages with their corresponding import modules
+requirements = [
+    ("auto-py-to-exe", "auto_py_to_exe"),
+    ("bcrypt", "bcrypt"),
+    ("beautifulsoup4", "bs4"),
+    ("browser-cookie3", "browser_cookie3"),
+    ("colorama", "colorama"),
+    ("cryptography", "cryptography"),
+    ("requests", "requests"),
+    ("deep-translator", "deep_translator"),
+    ("discord", "discord"),
+    ("dnspython", "dns"),
+    ("exifread", "exifread"),
+    ("customtkinter", "customtkinter"),
+    ("pyautogui", "pyautogui"),
+    ("pycryptodome", "Crypto"),  # Note: import as 'Crypto'
+    ("pyinstaller", "PyInstaller"),
+    ("pyqt5", "PyQt5"),
+    ("pyqtwebengine", "PyQtWebEngine"),
+    ("pywin32", "win32api"),
+    ("pyzipper", "pyzipper"),
+    ("rarfile", "rarfile"),
+    ("screeninfo", "screeninfo"),
+    ("selenium", "selenium"),
+    ("setuptools", "setuptools"),
+    ("urllib3", "urllib3"),
+    ("whois", "whois"),
+    ("whoiam", "whoiam"),
+]
 
-def main():
-    try:
-        # Se déplacer dans le dossier du script
-        script_dir = os.path.dirname(os.path.abspath(__file__))
-        os.chdir(script_dir)
-        
-        clear_screen()
-        print(f"Working directory: {script_dir}\n")
-        print("Installing the python modules required for the RedTiger Tool:\n")
-        
-        if sys.platform.startswith("win"):
-            os.system("python -m pip install --upgrade pip")
-            os.system("python -m pip install -r requirements.txt")
-            open_sites()
-            os.system("python RED_SPIDER.py")
-        
-        elif sys.platform.startswith("linux"):
-            os.system("pip3 install --upgrade pip")
-            os.system("pip3 install -r requirements.txt")
-            open_sites()
-            os.system("python3 RED_SPIDER.py")
-        
-        else:
-            print(f"Unsupported platform: {sys.platform}")
-    
-    except Exception as e:
-        input(f"Error: {e}")
+for package, module in requirements:
+    install_package(package, module)
 
-if __name__ == "__main__":
-    main()
+print("All necessary packages are installed.")
