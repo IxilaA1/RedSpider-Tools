@@ -416,7 +416,7 @@ def main():
             menu_indicator = current_menu_key.capitalize()
             
             # Correction des couleurs: Utilisation de RED_RGB et WHITE_RGB
-            shell_line = f"{rgb(*RED_RGB)}({RESET}administrator{rgb(*RED_RGB)}@{rgb(*WHITE_RGB)}RedSpider{rgb(*RED_RGB)})"
+            shell_line = f"{rgb(*RED_RGB)}({RESET}client{rgb(*RED_RGB)}@{rgb(*WHITE_RGB)}RedSpider{rgb(*RED_RGB)})"
             prompt = f"{rgb(*RED_RGB)}>> ${RESET} "
 
             display_categories_screen(current_menu, current_menu_key)
@@ -472,4 +472,5 @@ def main():
             input(f"{rgb(*RED_RGB)}An unexpected error occurred. Press Enter...{RESET}")
             
 if __name__ == "__main__":
+
     main()
